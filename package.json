@@ -4,7 +4,9 @@
   "description": "Adds a stubbed relay container for Relay/GraphQL stories",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run build && mocha",
+    "build": "babel --presets react,es2015 -- source.js > index.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/orta/react-storybooks-relay-container/issues"
   },
-  "homepage": "https://github.com/orta/react-storybooks-relay-container#readme"
+  "homepage": "https://github.com/orta/react-storybooks-relay-container#readme",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.5.3",
+    "react": "^15.2.1"
+  }
 }
