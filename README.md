@@ -7,14 +7,12 @@ This module adds a container that will pass through your API responses as though
 So your stories looks like this:
 
 ```js
-
 import React from 'react';
-import { View } from 'react-native';
 
 import { storiesOf } from '@kadira/react-native-storybook';
+import StubContainer from "react-storybooks-relay-container";
 
 import ArtistHeader from '../lib/components/artist/header';
-import StubContainer from "react-storybooks-relay-container";
 
 storiesOf('Artist Header')
   .add('Handles having no birthday in data', () => {
