@@ -1,0 +1,24 @@
+{
+  "name": "react-storybooks-relay-container",
+  "version": "1.0.0",
+  "description": "Adds a stubbed relay container for Relay/GraphQL stories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orta/react-storybooks-relay-container.git"
+  },
+  "keywords": [
+    "react",
+    "relay",
+    "storybooks"
+  ],
+  "author": "orta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orta/react-storybooks-relay-container/issues"
+  },
+  "homepage": "https://github.com/orta/react-storybooks-relay-container#readme"
+}
