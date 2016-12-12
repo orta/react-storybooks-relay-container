@@ -1,6 +1,6 @@
 {
   "name": "react-storybooks-relay-container",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds a stubbed relay container for Relay/GraphQL stories",
   "main": "index.js",
   "scripts": {
