@@ -12,10 +12,10 @@ export default class StubbedRelayContainer extends React.Component {
   getChildContext() {
     return {
       relay: {
-        forceFetch: () => {},
+        forceFetch: () => ({ abort: () => {} }),
         getFragmentResolver: () => {},
         getStoreData: () => {},
-        primeCache: () => {}
+        primeCache: () => ({ abort: () => {} })
       },
       route: { name: 'string', params:{}, useMockData: true, queries: {}}
     };
