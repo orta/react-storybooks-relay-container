@@ -32,9 +32,3 @@ export default class StubbedRelayContainer extends React.Component {
   hasFragment() {}
   hasVariable() {}
 }
-
-// Expose dummy relay and a fake route
-StubbedRelayContainer.childContextTypes = {
-  relay: React.PropTypes.object,
-  route: React.PropTypes.object
-};

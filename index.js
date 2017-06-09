@@ -28,7 +28,7 @@ var StubbedRelayContainer = function (_React$Component) {
   function StubbedRelayContainer() {
     _classCallCheck(this, StubbedRelayContainer);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(StubbedRelayContainer).apply(this, arguments));
+    return _possibleConstructorReturn(this, (StubbedRelayContainer.__proto__ || Object.getPrototypeOf(StubbedRelayContainer)).apply(this, arguments));
   }
 
   _createClass(StubbedRelayContainer, [{
@@ -38,10 +38,14 @@ var StubbedRelayContainer = function (_React$Component) {
     value: function getChildContext() {
       return {
         relay: {
-          forceFetch: function forceFetch() {},
+          forceFetch: function forceFetch() {
+            return { abort: function abort() {} };
+          },
           getFragmentResolver: function getFragmentResolver() {},
           getStoreData: function getStoreData() {},
-          primeCache: function primeCache() {}
+          primeCache: function primeCache() {
+            return { abort: function abort() {} };
+          }
         },
         route: { name: 'string', params: {}, useMockData: true, queries: {} }
       };
@@ -74,12 +78,5 @@ var StubbedRelayContainer = function (_React$Component) {
   return StubbedRelayContainer;
 }(_react2.default.Component);
 
-// Expose dummy relay and a fake route
-
-
 exports.default = StubbedRelayContainer;
-StubbedRelayContainer.childContextTypes = {
-  relay: _react2.default.PropTypes.object,
-  route: _react2.default.PropTypes.object
-};
 
