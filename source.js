@@ -2,6 +2,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Emulates a Relay-compatible container, passing the data in directly.
 // It's hard to know how well this can work for complicated examples. However,
@@ -12,12 +13,18 @@ export default class StubbedRelayContainer extends React.Component {
   getChildContext() {
     return {
       relay: {
-        forceFetch: () => ({ abort: () => {} }),
-        getFragmentResolver: () => {},
-        getStoreData: () => {},
-        primeCache: () => ({ abort: () => {} })
+        environment: {
+          applyMutation: () => {},
+          sendMutation: () => {},
+          forceFetch: () => ({ abort: () => {} }),
+          getFragmentResolver: () => {},
+          getStoreData: () => {},
+          primeCache: () => ({ abort: () => {} })
+        },
+        variables: {}
       },
-      route: { name: 'string', params:{}, useMockData: true, queries: {}}
+      route: { name: 'string', params: {}, useMockData: true, queries: {} },
+      useFakeData: true
     };
   }
 
@@ -32,3 +39,9 @@ export default class StubbedRelayContainer extends React.Component {
   hasFragment() {}
   hasVariable() {}
 }
+
+StubbedRelayContainer.childContextTypes = {
+    relay: PropTypes.object,
+    route: PropTypes.object,
+    useFakeData: PropTypes.bool
+};
