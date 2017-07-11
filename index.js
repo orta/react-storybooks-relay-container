@@ -83,7 +83,7 @@ var StubbedRelayContainer = function (_React$Component) {
             }
           },
           refetch: function refetch() {},
-          variables: this.props.variables
+          variables: this.props.variables || {}
         },
         route: { name: 'string', params: {}, useMockData: true, queries: {} },
         useFakeData: true
