@@ -40,9 +40,37 @@ var StubbedRelayContainer = function (_React$Component) {
 
     // Provide a stubbed context for child componentes
     value: function getChildContext() {
+      var _this2 = this;
+
       return {
         relay: {
           environment: {
+            '@@RelayModernEnvironment': true,
+            unstable_internal: {
+              areEqualSelectors: function areEqualSelectors() {},
+              createFragmentSpecResolver: function createFragmentSpecResolver() {
+                return {
+                  resolve: function resolve() {
+                    return _this2.props.props;
+                  },
+                  dispose: function dispose() {},
+                  setProps: function setProps() {}
+                };
+              },
+              createOperationSelector: function createOperationSelector() {},
+              getDataIDsFromObject: function getDataIDsFromObject() {},
+              getFragment: function getFragment() {},
+              getOperation: function getOperation() {},
+              getSelector: function getSelector() {},
+              getSelectorList: function getSelectorList() {},
+              getSlectorsFromObject: function getSlectorsFromObject() {},
+              getVariablesFromObject: function getVariablesFromObject() {}
+            },
+            lookup: function lookup() {},
+            retain: function retain() {},
+            sendQuery: function sendQuery() {},
+            streamQuery: function streamQuery() {},
+            subscribe: function subscribe() {},
             applyMutation: function applyMutation() {},
             sendMutation: function sendMutation() {},
             forceFetch: function forceFetch() {
@@ -54,7 +82,8 @@ var StubbedRelayContainer = function (_React$Component) {
               return { abort: function abort() {} };
             }
           },
-          variables: {}
+          refetch: function refetch() {},
+          variables: this.props.variables
         },
         route: { name: 'string', params: {}, useMockData: true, queries: {} },
         useFakeData: true

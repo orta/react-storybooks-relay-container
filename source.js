@@ -14,6 +14,28 @@ export default class StubbedRelayContainer extends React.Component {
     return {
       relay: {
         environment: {
+          '@@RelayModernEnvironment': true,
+          unstable_internal: {
+            areEqualSelectors: () => {},
+            createFragmentSpecResolver: () => ({
+                resolve: () => (this.props.props),
+                dispose: () => {},
+                setProps: () => {}
+            }),
+            createOperationSelector: () => {},
+            getDataIDsFromObject: () => {},
+            getFragment: () => {},
+            getOperation: () => {},
+            getSelector: () => {},
+            getSelectorList: () => {},
+            getSlectorsFromObject: () => {},
+            getVariablesFromObject: () => {}
+          },
+          lookup: () => {},
+          retain: () => {},
+          sendQuery: () => {},
+          streamQuery: () => {},
+          subscribe: () => {},
           applyMutation: () => {},
           sendMutation: () => {},
           forceFetch: () => ({ abort: () => {} }),
@@ -21,7 +43,8 @@ export default class StubbedRelayContainer extends React.Component {
           getStoreData: () => {},
           primeCache: () => ({ abort: () => {} })
         },
-        variables: {}
+        refetch: () => {},
+        variables: this.props.variables || {}
       },
       route: { name: 'string', params: {}, useMockData: true, queries: {} },
       useFakeData: true
