@@ -35,6 +35,7 @@ It looks like this behind the scenes:
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Emulates a Relay-compatible container, passing the data in directly.
 // It's hard to know how well this can work for complicated examples. However,
@@ -45,12 +46,43 @@ export default class StubbedRelayContainer extends React.Component {
   getChildContext() {
     return {
       relay: {
-        forceFetch: () => {},
-        getFragmentResolver: () => {},
-        getStoreData: () => {},
-        primeCache: () => {}
+        environment: {
+          '@@RelayModernEnvironment': true,
+          unstable_internal: {
+            areEqualSelectors: () => {},
+            createFragmentSpecResolver: () => ({
+                resolve: () => (this.props.props),
+                dispose: () => {},
+                setProps: () => {}
+            }),
+            createOperationSelector: () => ({ fragment: {} }),
+            getDataIDsFromObject: () => {},
+            getFragment: () => {},
+            getOperation: () => {},
+            getSelector: () => {},
+            getSelectorList: () => {},
+            getSlectorsFromObject: () => {},
+            getVariablesFromObject: () => {}
+          },
+          lookup: () => ({ data: {} }),
+          retain: () => {},
+          sendQuery: () => {},
+          streamQuery: () => {},
+          subscribe: () => {},
+          applyMutation: () => {},
+          sendMutation: ({ onCompleted, optimisticResponse, expectedError }) => {
+            onCompleted(optimisticResponse, expectedError)
+          },
+          forceFetch: () => ({ abort: () => {} }),
+          getFragmentResolver: () => {},
+          getStoreData: () => {},
+          primeCache: () => ({ abort: () => {} })
+        },
+        refetch: () => {},
+        variables: this.props.variables || {}
       },
-      route: { name: 'string', params:{}, useMockData: true, queries: {}}
+      route: { name: 'string', params: {}, useMockData: true, queries: {} },
+      useFakeData: true
     };
   }
 
@@ -66,10 +98,9 @@ export default class StubbedRelayContainer extends React.Component {
   hasVariable() {}
 }
 
-// Expose dummy relay and a fake route
 StubbedRelayContainer.childContextTypes = {
-  relay: React.PropTypes.object,
-  route: React.PropTypes.object
+    relay: PropTypes.object,
+    route: PropTypes.object,
+    useFakeData: PropTypes.bool
 };
-
 ```
