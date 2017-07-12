@@ -22,7 +22,7 @@ export default class StubbedRelayContainer extends React.Component {
                 dispose: () => {},
                 setProps: () => {}
             }),
-            createOperationSelector: () => {},
+            createOperationSelector: () => ({ fragment: {} }),
             getDataIDsFromObject: () => {},
             getFragment: () => {},
             getOperation: () => {},
@@ -31,13 +31,15 @@ export default class StubbedRelayContainer extends React.Component {
             getSlectorsFromObject: () => {},
             getVariablesFromObject: () => {}
           },
-          lookup: () => {},
+          lookup: () => ({ data: {} }),
           retain: () => {},
           sendQuery: () => {},
           streamQuery: () => {},
           subscribe: () => {},
           applyMutation: () => {},
-          sendMutation: () => {},
+          sendMutation: ({ onCompleted, optimisticResponse, expectedError }) => {
+            onCompleted(optimisticResponse, expectedError)
+          },
           forceFetch: () => ({ abort: () => {} }),
           getFragmentResolver: () => {},
           getStoreData: () => {},
