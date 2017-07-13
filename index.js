@@ -76,12 +76,14 @@ var StubbedRelayContainer = function (_React$Component) {
             streamQuery: function streamQuery() {},
             subscribe: function subscribe() {},
             applyMutation: function applyMutation() {},
-            sendMutation: function sendMutation(_ref) {
-              var onCompleted = _ref.onCompleted,
-                  optimisticResponse = _ref.optimisticResponse,
-                  expectedError = _ref.expectedError;
+            sendMutation: function sendMutation(input) {
+              var onCompleted = input.onCompleted,
+                  optimisticResponse = input.optimisticResponse,
+                  expectedError = input.expectedError;
 
-              onCompleted(optimisticResponse, expectedError);
+              if (onCompleted) {
+                onCompleted(optimisticResponse, expectedError);
+              }
             },
             forceFetch: function forceFetch() {
               return { abort: function abort() {} };
