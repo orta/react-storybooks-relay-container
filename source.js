@@ -37,8 +37,15 @@ export default class StubbedRelayContainer extends React.Component {
           streamQuery: () => {},
           subscribe: () => {},
           applyMutation: () => {},
-          sendMutation: ({ onCompleted, optimisticResponse, expectedError }) => {
-            onCompleted(optimisticResponse, expectedError)
+          sendMutation: (input: {
+              onCompleted?: (?any, ?any) => void,
+              optimisticResponse?: any,
+              expectedError?: any
+          }) => {
+              const { onCompleted, optimisticResponse, expectedError } = input;
+              if (onCompleted) {
+                onCompleted(optimisticResponse, expectedError);
+              }
           },
           forceFetch: () => ({ abort: () => {} }),
           getFragmentResolver: () => {},
