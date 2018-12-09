@@ -54,7 +54,9 @@ var StubbedRelayContainer = function (_React$Component) {
                     return _this2.props.props;
                   },
                   dispose: function dispose() {},
-                  setProps: function setProps() {}
+                  setProps: function setProps() {},
+                  isLoading: function isLoading() {},
+                  setCallback: function setCallback() {}
                 };
               },
               createOperationSelector: function createOperationSelector() {
@@ -68,6 +70,8 @@ var StubbedRelayContainer = function (_React$Component) {
               getSlectorsFromObject: function getSlectorsFromObject() {},
               getVariablesFromObject: function getVariablesFromObject() {}
             },
+            check: function check() {},
+            execute: function execute() {},
             lookup: function lookup() {
               return { data: {} };
             },
@@ -75,7 +79,6 @@ var StubbedRelayContainer = function (_React$Component) {
             sendQuery: function sendQuery() {},
             streamQuery: function streamQuery() {},
             subscribe: function subscribe() {},
-            execute: function execute() {},
             applyMutation: function applyMutation() {},
             sendMutation: function sendMutation(input) {
               var onCompleted = input.onCompleted,

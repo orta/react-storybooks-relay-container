@@ -20,7 +20,9 @@ export default class StubbedRelayContainer extends React.Component {
             createFragmentSpecResolver: () => ({
                 resolve: () => (this.props.props),
                 dispose: () => {},
-                setProps: () => {}
+                setProps: () => {},
+                isLoading: () => {},
+                setCallback: () => {}
             }),
             createOperationSelector: () => ({ fragment: {} }),
             getDataIDsFromObject: () => {},
@@ -31,6 +33,8 @@ export default class StubbedRelayContainer extends React.Component {
             getSlectorsFromObject: () => {},
             getVariablesFromObject: () => {}
           },
+          check: () => {},
+          execute: () => {},
           lookup: () => ({ data: {} }),
           retain: () => {},
           sendQuery: () => {},
